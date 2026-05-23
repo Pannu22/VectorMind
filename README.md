@@ -71,6 +71,31 @@ vectormind/
 
 ---
 
+# Current Capabilities
+
+## PDF Text Ingestion
+
+VectorMind can parse digitally generated PDFs into normalized document and page objects.
+This first slice extracts embedded text only; scanned PDFs and OCR fallback are planned future work.
+
+```bash
+pip install -e ".[dev]"
+```
+
+```python
+from vectormind import PDFParser
+
+document = PDFParser().parse("policy.pdf")
+
+print(document.file_name)
+print(document.page_count)
+
+for page in document.pages:
+    print(page.page_number, page.text[:120])
+```
+
+---
+
 # Key Features
 
 ## Adaptive Retrieval
